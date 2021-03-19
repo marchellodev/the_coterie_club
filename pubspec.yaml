@@ -1,0 +1,26 @@
+name: the_coterie_club
+description: The coterie club
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_facebook_auth: ^3.1.1
+  google_fonts: ^2.0.0
+  responsive_framework: ^0.1.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
