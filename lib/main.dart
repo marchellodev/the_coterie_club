@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 
+import 'dashboard/dashboard.dart';
 import 'intro.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: IntroScreen(),
+      home: DashboardScreen(),
     );
   }
 }

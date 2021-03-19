@@ -130,7 +130,7 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
               ),
             ),
             SizedBox(
-              height: 36,
+              height: 26,
             ),
             Center(
               child: ElevatedButton(
