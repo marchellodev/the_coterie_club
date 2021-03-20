@@ -17,15 +17,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 38, horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: ListView(
             children: [
-              Hero(
-                tag: 'header',
-                child: Material(
-                  child: Text(
-                    'Some finishing touches',
-                    style: GoogleFonts.rubik(fontSize: 26),
+              Center(
+                child: Hero(
+                  tag: 'header',
+                  child: Material(
+                    child: Text(
+                      'Some finishing touches',
+                      style: GoogleFonts.rubik(fontSize: 26),
+                    ),
                   ),
                 ),
               ),

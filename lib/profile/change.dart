@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_coterie_club/dashboard/dashboard.dart';
 
 class ChangeProfileScreen extends StatefulWidget {
   @override
@@ -134,7 +135,10 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
             ),
             Center(
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (_) => DashboardScreen()));
+                  },
                   child: Text(
                     'Save',
                     style: GoogleFonts.montserrat(),

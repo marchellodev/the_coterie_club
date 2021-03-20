@@ -42,16 +42,19 @@ class ExplorePage extends StatelessWidget {
                   children: [
                     Positioned.fill(
                       child: Image.network(
-                        'https://cdn.pixabay.com/photo/2015/05/25/14/29/tea-783352_960_720.jpg',
+                        index == 0
+                            ? 'https://churchleaders-eszuskq0bptlfh8awbb.stackpathdns.com/wp-content/uploads/2018/12/1.4.CHILDREN.CC.FamilyMovieDiscipleship.jpg'
+                            : (index == 1
+                                ? 'https://www.sandyspringmuseum.org/wp-content/uploads/2019/01/tea-party.jpg'
+                                : 'https://open4business.com.ua/wp-content/uploads/2020/10/1594704748_77856.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
                     Positioned.fill(
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                        filter: ImageFilter.blur(sigmaX: 2.8, sigmaY: 2.8),
                         child: new Container(
-                          decoration: new BoxDecoration(
-                              color: Colors.black.withOpacity(0.34)),
+                          decoration: new BoxDecoration(color: Colors.black.withOpacity(0.4)),
                         ),
                       ),
                     ),
@@ -69,15 +72,12 @@ class ExplorePage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Event name',
-                            style: GoogleFonts.montserrat(
-                                color: Colors.grey.shade50,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
+                            'The cosmic movie night',
+                            style: GoogleFonts.montserrat(color: Colors.grey.shade50, fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                           SizedBox(height: 4),
                           Text(
-                            'Long description long description long description long description long description',
+                            'Me and a couple of friends are organizing the movie night! We will start with Star Wars and end with Star Trek!',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.montserrat(
                               color: Colors.grey.shade300,
@@ -93,37 +93,25 @@ class ExplorePage extends StatelessWidget {
                                   Text(
                                     'Category',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.rubik(
-                                        color: Colors.grey.shade300,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
+                                    style: GoogleFonts.rubik(color: Colors.grey.shade300, fontSize: 14, fontWeight: FontWeight.w300),
                                   ),
                                   SizedBox(height: 6),
                                   Text(
                                     'Where',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.rubik(
-                                        color: Colors.grey.shade300,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
+                                    style: GoogleFonts.rubik(color: Colors.grey.shade300, fontSize: 14, fontWeight: FontWeight.w300),
                                   ),
                                   SizedBox(height: 6),
                                   Text(
                                     'When',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.rubik(
-                                        color: Colors.grey.shade300,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
+                                    style: GoogleFonts.rubik(color: Colors.grey.shade300, fontSize: 14, fontWeight: FontWeight.w300),
                                   ),
                                   SizedBox(height: 6),
                                   Text(
                                     'People',
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.rubik(
-                                        color: Colors.grey.shade300,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
+                                    style: GoogleFonts.rubik(color: Colors.grey.shade300, fontSize: 14, fontWeight: FontWeight.w300),
                                   ),
                                 ],
                               ),
@@ -134,13 +122,13 @@ class ExplorePage extends StatelessWidget {
                                   Row(
                                     children: [
                                       Icon(
-                                        FeatherIcons.coffee,
+                                        FeatherIcons.film,
                                         color: Colors.grey.shade100,
                                         size: 16,
                                       ),
                                       SizedBox(width: 6),
                                       Text(
-                                        'Party',
+                                        'Movies',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.montserrat(
                                           color: Colors.grey.shade100,
@@ -160,7 +148,7 @@ class ExplorePage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6),
                                   Text(
-                                    'May 20, 8pm - 10pm',
+                                    'May 24, 7pm - 10am',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       color: Colors.grey.shade100,
@@ -169,7 +157,7 @@ class ExplorePage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6),
                                   Text(
-                                    '20',
+                                    '5',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       color: Colors.grey.shade100,
@@ -184,21 +172,24 @@ class ExplorePage extends StatelessWidget {
                           Text(
                             'Organizer',
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.montserrat(
-                                color: Colors.grey.shade300,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300),
+                            style: GoogleFonts.montserrat(color: Colors.grey.shade300, fontSize: 14, fontWeight: FontWeight.w300),
                           ),
                           SizedBox(height: 8),
                           Row(
                             children: [
+                              // CircleAvatar(
+                              //   child: Icon(
+                              //     FeatherIcons.user,
+                              //     size: 18,
+                              //     color: Colors.grey.shade50,
+                              //   ),
+                              //   backgroundColor: Colors.black.withOpacity(0.4),
+                              //   radius: 22,
+                              // ),
                               CircleAvatar(
-                                child: Icon(
-                                  FeatherIcons.user,
-                                  size: 18,
-                                  color: Colors.grey.shade50,
-                                ),
-                                backgroundColor: Colors.black.withOpacity(0.4),
+                                backgroundImage:
+                                    NetworkImage('https://i.pinimg.com/originals/97/e4/2a/97e42a82fc7911961d3ca55f54d1372c.jpg'),
+                                // backgroundColor: Colors.black.withOpacity(0.4),
                                 radius: 22,
                               ),
                               SizedBox(
@@ -208,22 +199,15 @@ class ExplorePage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'User name',
-                                    style: GoogleFonts.montserrat(
-                                        color: Colors.grey.shade100,
-                                        fontSize: 14),
+                                    'Mike Kijelberg',
+                                    style: GoogleFonts.montserrat(color: Colors.grey.shade100, fontSize: 14),
                                   ),
                                   SizedBox(height: 1),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                            0.86 -
-                                        110,
+                                    width: MediaQuery.of(context).size.width * 0.86 - 110,
                                     child: Text(
-                                      'biobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiobiov',
-                                      style: GoogleFonts.montserrat(
-                                          color: Colors.grey.shade100,
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w300),
+                                      'A big move fan & amateur photographer',
+                                      style: GoogleFonts.montserrat(color: Colors.grey.shade100, fontSize: 11, fontWeight: FontWeight.w300),
                                     ),
                                   )
                                 ],
@@ -237,8 +221,7 @@ class ExplorePage extends StatelessWidget {
                 ),
               ),
               cardController: controller,
-              swipeUpdateCallback:
-                  (DragUpdateDetails details, Alignment align) {
+              swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
                 /// Get swiping card's alignment
                 if (align.x < 0) {
                   //Card is LEFT swiping
@@ -246,8 +229,7 @@ class ExplorePage extends StatelessWidget {
                   //Card is RIGHT swiping
                 }
               },
-              swipeCompleteCallback:
-                  (CardSwipeOrientation orientation, int index) {
+              swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
                 /// Get orientation & index of swiped card!
               },
             ),

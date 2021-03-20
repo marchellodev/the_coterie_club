@@ -42,7 +42,7 @@ class IntroScreen extends StatelessWidget {
               child: Material(
                 child: Text(
                   'The Coterie Club',
-                  style: GoogleFonts.rubik(fontSize: 26),
+                  style: GoogleFonts.rubik(fontSize: 26, fontWeight: FontWeight.w500),
                 ),
               ),
             ),
@@ -55,9 +55,12 @@ class IntroScreen extends StatelessWidget {
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (_) => RegisterScreen()));
                     },
-                    child: Text(
-                      'Log In via Facebook',
-                      style: GoogleFonts.montserrat(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        'Log In via Facebook',
+                        style: GoogleFonts.montserrat(fontSize: 18),
+                      ),
                     ))),
             Spacer(),
           ],
