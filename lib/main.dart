@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
-import 'package:the_coterie_club/profile/change.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
 
 import 'dashboard/dashboard.dart';
 import 'intro.dart';
 
-String bio;
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox<String>('auth');
 
-void main() {
+  Hive.box<String>('auth').clear();
   runApp(MyApp());
 }
 
@@ -26,10 +29,9 @@ class MyApp extends StatelessWidget {
         );
       },
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home: IntroScreen(),
+      home: DashboardScreen(),
     );
   }
 }

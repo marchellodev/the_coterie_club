@@ -17,7 +17,11 @@ dependencies:
   responsive_framework: ^0.1.0
   flutter_feather_icons: ^1.0.3
   flutter_tindercard: ^0.2.0
+  http: ^0.13.1
 
+
+  hive: ^2.0.0
+  hive_flutter: ^1.0.0
 
 dev_dependencies:
   flutter_test:
