@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_coterie_club/dashboard/dashboard.dart';
+
+import '../main.dart';
 
 class ChangeProfileScreen extends StatefulWidget {
   @override
@@ -22,7 +25,6 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
     'Dancing',
     'Volunteering',
   ];
-  var selectedInterests = <String>[];
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +33,29 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
         child: ListView(
           padding: EdgeInsets.symmetric(vertical: 38, horizontal: 24),
           children: [
-            Center(
-              child: Hero(
-                tag: 'header',
-                child: Material(
-                  child: Text(
-                    'Setting up the profile',
-                    style: GoogleFonts.rubik(fontSize: 26),
+            Stack(
+              children: [
+                Transform.translate(
+                  offset: Offset(-10, -10),
+                  child: IconButton(
+                      icon: Icon(FeatherIcons.chevronLeft),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      }
                   ),
                 ),
-              ),
+                Center(
+                  child: Hero(
+                    tag: 'header',
+                    child: Material(
+                      child: Text(
+                        'Setting up the profile',
+                        style: GoogleFonts.rubik(fontSize: 26),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
             SizedBox(
               height: 36,
@@ -50,6 +65,11 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                 border: OutlineInputBorder(),
                 labelText: 'Bio',
               ),
+              onChanged: (e) {
+                bio = e;
+              },
+              controller: TextEditingController()
+                ..text = bio,
               minLines: 2,
               maxLines: 2,
             ),
@@ -71,16 +91,16 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                     label: Text(el),
                     onSelected: (val) {
                       setState(() {
-                        if (selectedInterests.contains(el)) {
-                          selectedInterests.remove(el);
+                        if (interests.contains(el)) {
+                          interests.remove(el);
                         } else {
-                          selectedInterests.add(el);
+                          interests.add(el);
                         }
                       });
                     },
                     labelStyle: GoogleFonts.montserrat(),
                     backgroundColor: Colors.transparent,
-                    selected: selectedInterests.contains(el),
+                    selected: interests.contains(el),
                     selectedColor: Colors.blue.shade50,
                     elevation: 0,
                     pressElevation: 0,
@@ -88,11 +108,7 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                     selectedShadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(6),
-                        side: BorderSide(
-                            color: selectedInterests.contains(el)
-                                ? Colors.blue.shade100
-                                : Colors.grey.shade200,
-                            width: 1.8)),
+                        side: BorderSide(color: interests.contains(el) ? Colors.blue.shade100 : Colors.grey.shade200, width: 1.8)),
                   )
               ],
             ),
@@ -107,28 +123,43 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
               height: 10,
             ),
             TextFormField(
+              onChanged: (e) {
+                things[0] = e;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'The first thing',
               ),
+              controller: TextEditingController()
+                ..text = things[0],
             ),
             SizedBox(
               height: 14,
             ),
             TextFormField(
+              onChanged: (e) {
+                things[1] = e;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'The second thing',
               ),
+              controller: TextEditingController()
+                ..text = things[1],
             ),
             SizedBox(
               height: 14,
             ),
             TextFormField(
+              onChanged: (e) {
+                things[2] = e;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'The third thing',
               ),
+              controller: TextEditingController()
+                ..text = things[2],
             ),
             SizedBox(
               height: 26,
@@ -136,8 +167,12 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
             Center(
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (_) => DashboardScreen()));
+                    if (editing) {
+                      Navigator.of(context).pop();
+                    } else {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => DashboardScreen()));
+                      editing = true;
+                    }
                   },
                   child: Text(
                     'Save',

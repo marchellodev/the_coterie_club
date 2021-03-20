@@ -5,14 +5,85 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class EventCard {
+  final String title;
+  final String subtitle;
+  final String where;
+  final String when;
+  final String people;
+  final String picture;
+  final String organizerName;
+  final String organizerBio;
+  final String organizerPicture;
+  final String category;
+  final IconData categoryIcon;
+
+  const EventCard({
+    this.title,
+    this.subtitle,
+    this.where,
+    this.when,
+    this.people,
+    this.picture,
+    this.organizerName,
+    this.organizerBio,
+    this.organizerPicture,
+    this.category,
+    this.categoryIcon,
+  });
+}
+
 class ExplorePage extends StatelessWidget {
-  List<String> welcomeImages = [
-    "assets/welcome0.png",
-    "assets/welcome1.png",
-    "assets/welcome2.png",
-    "assets/welcome2.png",
-    "assets/welcome1.png",
-    "assets/welcome1.png"
+  final List<EventCard> data = [
+    EventCard(
+        title: 'Fortnite & chit-chat',
+        subtitle: 'Looking for a fun squad to play the best game in the world',
+        category: 'Games',
+        categoryIcon: FeatherIcons.monitor,
+        where: 'Online',
+        when: 'Every weekends, 10pm - 12pm',
+        people: '4',
+        picture: 'https://i.ytimg.com/vi/3KgmY5NrEzU/maxresdefault.jpg',
+        organizerPicture: 'https://wl-brightside.cf.tsp.li/resize/728x/jpg/e35/4ec/4bb0ae5afebff4afdab1b29f5b.jpg',
+        organizerName: 'Alice Smith',
+        organizerBio: 'Love books and video games ^_^'),
+    EventCard(
+        title: 'Football',
+        subtitle: 'Gonna play football and drink beer',
+        category: 'Sport',
+        categoryIcon: FeatherIcons.award,
+        where: 'Arsenalna metro, Kyiv',
+        when: 'May 26, 6pm - 11pm',
+        people: '6-10',
+        picture: 'https://open4business.com.ua/wp-content/uploads/2020/10/1594704748_77856.jpg',
+        organizerPicture: 'https://secure.i.telegraph.co.uk/multimedia/archive/03249/archetypal-male-fa_3249635c.jpg',
+        organizerName: 'Mike Kijelberg',
+        organizerBio: 'A big movie fan & amateur photographer'),
+    EventCard(
+        title: 'The cosmic movie night',
+        subtitle: 'Me and a couple of friends are organizing the movie night! We will start with Star Wars and end with Star Trek!',
+        category: 'Movies',
+        categoryIcon: FeatherIcons.film,
+        where: 'Arsenalna metro, Kyiv',
+        when: 'May 24, 7pm - 10 am',
+        people: '5',
+        picture:
+            'https://churchleaders-eszuskq0bptlfh8awbb.stackpathdns.com/wp-content/uploads/2018/12/1.4.CHILDREN.CC.FamilyMovieDiscipleship.jpg',
+        organizerPicture: 'https://i.pinimg.com/originals/97/e4/2a/97e42a82fc7911961d3ca55f54d1372c.jpg',
+        organizerName: 'Mike Kijelberg',
+        organizerBio: 'A big movie fan & amateur photographer'),
+    EventCard(
+        title: 'The tea party !!!',
+        subtitle: 'Wanna drink some tasty tea and talk about some philosophical stuff? Join us!',
+        category: 'Food',
+        categoryIcon: FeatherIcons.smile,
+        where: 'Zhytomyrska metro, Kyiv',
+        when: 'May 23, 10am - 1pm',
+        people: '3-4',
+        picture: 'https://www.sandyspringmuseum.org/wp-content/uploads/2019/01/tea-party.jpg',
+        organizerPicture: 'https://wl-brightside.cf.tsp.li/resize/728x/jpg/e35/4ec/4bb0ae5afebff4afdab1b29f5b.jpg',
+        organizerName: 'Alice Smith',
+        organizerBio: 'Love books and video games ^_^'),
   ];
 
   @override
@@ -29,7 +100,7 @@ class ExplorePage extends StatelessWidget {
               swipeUp: true,
               swipeDown: true,
               orientation: AmassOrientation.BOTTOM,
-              totalNum: welcomeImages.length,
+              totalNum: data.length,
               stackNum: 3,
               swipeEdge: 4.0,
               maxWidth: MediaQuery.of(context).size.width * 0.86 + 1,
@@ -42,11 +113,7 @@ class ExplorePage extends StatelessWidget {
                   children: [
                     Positioned.fill(
                       child: Image.network(
-                        index == 0
-                            ? 'https://churchleaders-eszuskq0bptlfh8awbb.stackpathdns.com/wp-content/uploads/2018/12/1.4.CHILDREN.CC.FamilyMovieDiscipleship.jpg'
-                            : (index == 1
-                                ? 'https://www.sandyspringmuseum.org/wp-content/uploads/2019/01/tea-party.jpg'
-                                : 'https://open4business.com.ua/wp-content/uploads/2020/10/1594704748_77856.jpg'),
+                        data[index].picture,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -59,25 +126,18 @@ class ExplorePage extends StatelessWidget {
                       ),
                     ),
                     // event name
-                    // description
-                    // when (from and to)
-                    // where
-                    // max people
-                    // people attending
-                    // category
-
                     Positioned.fill(
                         child: Padding(
                       padding: const EdgeInsets.all(28),
                       child: Column(
                         children: [
                           Text(
-                            'The cosmic movie night',
+                            data[index].title,
                             style: GoogleFonts.montserrat(color: Colors.grey.shade50, fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                           SizedBox(height: 4),
                           Text(
-                            'Me and a couple of friends are organizing the movie night! We will start with Star Wars and end with Star Trek!',
+                            data[index].subtitle,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.montserrat(
                               color: Colors.grey.shade300,
@@ -122,13 +182,13 @@ class ExplorePage extends StatelessWidget {
                                   Row(
                                     children: [
                                       Icon(
-                                        FeatherIcons.film,
+                                        data[index].categoryIcon,
                                         color: Colors.grey.shade100,
                                         size: 16,
                                       ),
                                       SizedBox(width: 6),
                                       Text(
-                                        'Movies',
+                                        data[index].category,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.montserrat(
                                           color: Colors.grey.shade100,
@@ -139,7 +199,7 @@ class ExplorePage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6),
                                   Text(
-                                    'Arsenalna metro, Kiyv',
+                                    data[index].where,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       color: Colors.grey.shade100,
@@ -148,7 +208,7 @@ class ExplorePage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6),
                                   Text(
-                                    'May 24, 7pm - 10am',
+                                    data[index].when,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       color: Colors.grey.shade100,
@@ -157,7 +217,7 @@ class ExplorePage extends StatelessWidget {
                                   ),
                                   SizedBox(height: 6),
                                   Text(
-                                    '5',
+                                    data[index].people,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.montserrat(
                                       color: Colors.grey.shade100,
@@ -177,21 +237,22 @@ class ExplorePage extends StatelessWidget {
                           SizedBox(height: 8),
                           Row(
                             children: [
-                              // CircleAvatar(
-                              //   child: Icon(
-                              //     FeatherIcons.user,
-                              //     size: 18,
-                              //     color: Colors.grey.shade50,
-                              //   ),
-                              //   backgroundColor: Colors.black.withOpacity(0.4),
-                              //   radius: 22,
-                              // ),
-                              CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage('https://i.pinimg.com/originals/97/e4/2a/97e42a82fc7911961d3ca55f54d1372c.jpg'),
-                                // backgroundColor: Colors.black.withOpacity(0.4),
-                                radius: 22,
-                              ),
+                              if (data[index].organizerPicture == null)
+                                CircleAvatar(
+                                  child: Icon(
+                                    FeatherIcons.user,
+                                    size: 18,
+                                    color: Colors.grey.shade50,
+                                  ),
+                                  backgroundColor: Colors.black.withOpacity(0.4),
+                                  radius: 22,
+                                ),
+                              if (data[index].organizerPicture != null)
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(data[index].organizerPicture),
+                                  // backgroundColor: Colors.black.withOpacity(0.4),
+                                  radius: 22,
+                                ),
                               SizedBox(
                                 width: 6,
                               ),
@@ -199,14 +260,14 @@ class ExplorePage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Mike Kijelberg',
+                                    data[index].organizerName,
                                     style: GoogleFonts.montserrat(color: Colors.grey.shade100, fontSize: 14),
                                   ),
                                   SizedBox(height: 1),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.86 - 110,
                                     child: Text(
-                                      'A big move fan & amateur photographer',
+                                      data[index].organizerBio,
                                       style: GoogleFonts.montserrat(color: Colors.grey.shade100, fontSize: 11, fontWeight: FontWeight.w300),
                                     ),
                                   )
@@ -235,6 +296,7 @@ class ExplorePage extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 18),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -245,9 +307,10 @@ class ExplorePage extends StatelessWidget {
               icon: Icon(
                 FeatherIcons.x,
                 color: Colors.red.shade600,
+                size: 32,
               ),
             ),
-            SizedBox(width: 32),
+            SizedBox(width: 48),
             IconButton(
               onPressed: () {
                 controller.triggerRight();
@@ -255,6 +318,7 @@ class ExplorePage extends StatelessWidget {
               icon: Icon(
                 FeatherIcons.heart,
                 color: Colors.green.shade600,
+                size: 32,
               ),
             ),
           ],

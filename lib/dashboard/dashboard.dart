@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:the_coterie_club/dashboard/profile.dart';
 
+import 'events.dart';
 import 'explore.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         },
         children: [
           ExplorePage(),
-          Center(child: Text('Page 2')),
+          EventsPage(),
 
           ProfilePage(),
         ],

@@ -8,6 +8,11 @@ import 'package:hive/hive.dart';
 import 'dashboard/dashboard.dart';
 import 'intro.dart';
 
+String bio = '';
+List<String> interests = [];
+List<String> things = ['', '', ''];
+bool editing = false;
+
 Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox<String>('auth');
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DashboardScreen(),
+      home: IntroScreen(),
     );
   }
 }

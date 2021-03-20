@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<String> login(String id, String token) async {
+  return 'show';
   print('logging in');
   final r = await http.post(Uri.parse('https://e1def6f50501.ngrok.io/login'), body: {
     "id": "1350487795323758",
